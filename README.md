@@ -1,7 +1,12 @@
-# api documentation for  [vhost (v3.0.2)](https://github.com/expressjs/vhost)  [![npm package](https://img.shields.io/npm/v/npmdoc-vhost.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-vhost) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-vhost.svg)](https://travis-ci.org/npmdoc/node-npmdoc-vhost)
+# npmdoc-vhost
+
+#### api documentation for  [vhost (v3.0.2)](https://github.com/expressjs/vhost)  [![npm package](https://img.shields.io/npm/v/npmdoc-vhost.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-vhost) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-vhost.svg)](https://travis-ci.org/npmdoc/node-npmdoc-vhost)
+
 #### virtual domain hosting
 
 [![NPM](https://nodei.co/npm/vhost.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/vhost)
+
+- [https://npmdoc.github.io/node-npmdoc-vhost/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-vhost/build/apidoc.html)
 
 [![apidoc](https://npmdoc.github.io/node-npmdoc-vhost/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-vhost/build/apidoc.html)
 
@@ -88,71 +93,9 @@
         "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
         "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
     },
-    "version": "3.0.2"
+    "version": "3.0.2",
+    "bin": {}
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module vhost](#apidoc.module.vhost)
-1.  [function <span class="apidocSignatureSpan"></span>vhost (hostname, handle)](#apidoc.element.vhost.vhost)
-1.  [function <span class="apidocSignatureSpan">vhost.</span>toString ()](#apidoc.element.vhost.toString)
-
-
-
-# <a name="apidoc.module.vhost"></a>[module vhost](#apidoc.module.vhost)
-
-#### <a name="apidoc.element.vhost.vhost"></a>[function <span class="apidocSignatureSpan"></span>vhost (hostname, handle)](#apidoc.element.vhost.vhost)
-- description and source-code
-```javascript
-function vhost(hostname, handle) {
-  if (!hostname) {
-    throw new TypeError('argument hostname is required')
-  }
-
-  if (!handle) {
-    throw new TypeError('argument handle is required')
-  }
-
-  if (typeof handle !== 'function') {
-    throw new TypeError('argument handle must be a function')
-  }
-
-  // create regular expression for hostname
-  var regexp = hostregexp(hostname)
-
-  return function vhost(req, res, next) {
-    var vhostdata = vhostof(req, regexp)
-
-    if (!vhostdata) {
-      return next()
-    }
-
-    // populate
-    req.vhost = vhostdata
-
-    // handle
-    handle(req, res, next)
-  }
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.vhost.toString"></a>[function <span class="apidocSignatureSpan">vhost.</span>toString ()](#apidoc.element.vhost.toString)
-- description and source-code
-```javascript
-toString = function () {
-    return toString;
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
